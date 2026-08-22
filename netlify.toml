@@ -1,0 +1,22 @@
+[[headers]]
+  for = "/hero-video.mp4"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/hero-poster.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+
+[[redirects]]
+  from = "https://www.sydneybespoketrainer.com/*"
+  to = "https://sydneybespoketrainer.com/:splat"
+  status = 301
+  force = true
