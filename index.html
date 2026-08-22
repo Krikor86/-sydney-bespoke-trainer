@@ -3589,6 +3589,39 @@ footer {
     background: #080a0c url('hero-poster.jpg') center / cover no-repeat !important;
   }
 }
+
+/* ======== RESTORED ABOUT LAYOUT & MOBILE HERO SCALE ======== */
+.about-section {
+  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr) !important;
+}
+.about-img-col {
+  display: block !important;
+  position: relative !important;
+  min-height: 680px !important;
+}
+.about-img {
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+}
+
+@media (max-width: 960px) {
+  .hero.premium-hero.premium-hero-soft.hero-video-background {
+    min-height: 650px !important;
+    padding: 104px 20px 48px !important;
+  }
+  .about-section {
+    grid-template-columns: 1fr !important;
+  }
+  .about-img-col {
+    display: block !important;
+    min-height: 500px !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -3720,9 +3753,8 @@ footer {
     <div class="eyebrow">About Greg</div>
     <h2 class="headline">18+ YEARS.<br>ONE CRAFT.</h2>
     <div class="about-text">
-      <p>As a father of two, I understand the realities of balancing family, career, and personal health. My role is to make your training both highly effective and seamlessly integrated into your lifestyle.</p>
-      <p>With more than 18 years of experience, I've coached a diverse range of clients—from busy professionals to those seeking significant improvements in strength, muscle, and overall performance.</p>
-      <p><strong>My approach combines evidence-based, periodised training with precise training and program optimisation to ensure the best possible long-term results.</strong></p>
+      <p>With more than 18 years of coaching experience, I’ve worked with a diverse range of clients—from busy professionals to those pursuing significant improvements in strength, muscle and performance. My approach combines evidence-based, periodised training with a strong focus on technique and ongoing program optimisation to deliver measurable, lasting results.</p>
+      <p>As a father of two, I understand what it takes to balance family, career and personal health. That’s why my coaching is designed to be highly effective while integrating seamlessly into your life—no wasted time, no guesswork, just training that works for you.</p>
     </div>
     <div class="creds-list">
       <div class="cred">AIF Cert III — Gym Instructor</div>
