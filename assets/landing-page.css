@@ -8,7 +8,9 @@
   background: #0b0d0f;
 }
 
-.sbd-page a { color: inherit; }
+.sbd-page .site-nav .nav-logo { color: rgba(255,255,255,.94); }
+.sbd-page .site-nav .nav-links a { color: rgba(255,255,255,.62); }
+.sbd-page .site-nav .nav-links a:hover { color: #fff; }
 
 .sbd-wrap {
   width: min(1180px, calc(100% - 48px));
@@ -199,7 +201,7 @@
 }
 
 .sbd-metric + .sbd-metric { border-left: 1px solid rgba(255,255,255,.08); }
-.sbd-metric strong { display: block; font-size: 28px; }
+.sbd-metric strong { display: block; color: #f5f1eb; font-size: 28px; }
 .sbd-metric span {
   display: block;
   margin-top: 6px;
