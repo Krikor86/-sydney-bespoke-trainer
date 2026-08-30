@@ -1,0 +1,24 @@
+name: Temporary portal deploy
+on: [push]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconstruct exact portal
+        run: |
+          set -euo pipefail
+          tr -d '[:space:]' < portal-payload.b64 | base64 --decode | gzip -d > index.html
+          test "$(wc -c < index.html)" -eq 44089
+          echo '9797d0b9b9aacd34202edd8745349c93eae60f005bb2e68a99d45858a01b7270  index.html' | sha256sum -c -
+          zip -q deploy.zip index.html
+      - name: Publish to existing Netlify portal
+        env:
+          NETLIFY_PROXY: https://netlify-mcp.netlify.app/proxy/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0.._LaXXQE4aBRmhRfE.QU8eva9UYsMBtuAWjOBa72YpMtvb44s6as_jPloUkb9MNO0WTuIgzXhgCr3gYxuzuk-ek5eytJ4oLUN3eDZZDr-5ehI4nZBMHfjYuv8IvEkiAdRPaWYo0rsGEArqNClOC9OwMTK3KhH3twYGHp3PMV5u3Nt6jJy8CPfbqkBA5molTScyo8qai4NRQKyJZuiG-EkcSaFB0EAiqAlEEmfXfjGkF4ViAYkPhZRaE3iR5VfyyQTN3cCOlqBIsA9cDLt4McjeItNODBpvy1VAM8vw92KaOdKrfiEx4pWxLCjJ_Fk6uOMD2G4uCo6O0RfFfN8xOwrB_Ae3boBxaWjgjMVDjVhMbmmFi-uSxZ2gO66nsXsnEm3T6eD9DnWeBf3UGci34j2h1EFm.oyUMTE8KWHZOjAulRhG3rA
+        run: |
+          set -euo pipefail
+          curl --fail-with-body --silent --show-error \
+            -H 'User-Agent: netlify-mcp' \
+            -F 'zip=@deploy.zip;type=application/zip' \
+            "$NETLIFY_PROXY/api/v1/sites/4bc6f924-9282-4fe4-8586-f6c9f02feda7/builds" \
+            | tee netlify-response.json
