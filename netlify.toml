@@ -1,0 +1,19 @@
+[[redirects]]
+from = "/pricing-plans/list"
+to = "/#pricing"
+status = 301
+
+[[redirects]]
+from = "/pricing-plans/list/"
+to = "/#pricing"
+status = 301
+
+[[redirects]]
+from = "/book-online"
+to = "/#contact"
+status = 301
+
+[[redirects]]
+from = "/book-online/"
+to = "/#contact"
+status = 301
