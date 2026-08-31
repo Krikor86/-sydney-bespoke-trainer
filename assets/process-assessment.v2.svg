@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" role="img" aria-label="Movement and technique assessment">
+  <circle cx="96" cy="96" r="73" fill="#F3F0E9" stroke="#FF5A1F" stroke-width="4"/>
+  <g fill="none" stroke="#24211F" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="72" cy="54" r="11"/>
+    <path d="M72 65v9"/>
+    <path d="M47 87Q72 69 97 87"/>
+    <path d="M51 84Q44 103 41 122"/>
+    <path d="M93 84Q101 103 104 122"/>
+    <path d="M60 78Q55 96 60 112L72 123 84 112Q89 96 84 78"/>
+    <path d="M67 121Q62 137 56 151"/>
+    <path d="M77 121Q83 137 88 151"/>
+  </g>
+  <g fill="#FF5A1F">
+    <circle cx="49" cy="86" r="4.5"/>
+    <circle cx="95" cy="86" r="4.5"/>
+    <circle cx="61" cy="112" r="4.5"/>
+    <circle cx="83" cy="112" r="4.5"/>
+  </g>
+  <g fill="none" stroke="#FF5A1F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M119 59h17v17M153 59h-8M153 59v8"/>
+    <path d="M119 133h17v-17M153 133h-8M153 133v-8"/>
+    <path d="M123 96h26"/>
+    <circle cx="136" cy="96" r="8"/>
+  </g>
+</svg>
