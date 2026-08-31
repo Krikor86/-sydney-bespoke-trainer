@@ -3567,14 +3567,137 @@ body {
     letter-spacing: clamp(0.25px, 0.16vw, 0.7px);
   }
 }
+
+/* ======== FINAL WORDMARK + PROCESS ICONS ======== */
+.brand-wordmark {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.brand-wordmark-main {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3.2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.brand-wordmark .brand-bespoke { color: var(--performance-orange) !important; }
+.brand-wordmark .brand-trainer { color: #FFFFFF !important; }
+
+.brand-wordmark-city {
+  color: rgba(255,255,255,0.68) !important;
+  font-size: 7px;
+  font-weight: 500;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  padding-left: 5px;
+}
+
+.process-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: rgba(255,90,31,0.10);
+  border: 1px solid rgba(255,90,31,0.10);
+}
+
+.process-row {
+  display: grid;
+  grid-template-columns: 48px 84px minmax(0, 1fr);
+  gap: 30px;
+  align-items: center;
+  padding: 32px 40px;
+  border-left: 3px solid transparent;
+}
+
+.process-row:nth-child(odd) { background: var(--charcoal); }
+.process-row:nth-child(even) { background: var(--charcoal-mid); }
+.process-row:first-child { border-left-color: var(--performance-orange); }
+
+.process-number {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  color: rgba(255,90,31,0.24);
+  line-height: 1;
+}
+
+.process-icon-shell {
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  border-radius: 18px;
+  background: var(--warm-cream);
+  box-shadow: inset 0 0 0 1px rgba(10,12,14,0.08);
+}
+
+.process-icon {
+  display: block;
+  width: 68px;
+  height: 68px;
+}
+
+.process-title {
+  margin-bottom: 8px;
+  color: var(--performance-orange);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.process-description {
+  color: var(--grey-light);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.footer-logo.brand-wordmark { align-items: flex-start; }
+.footer-logo .brand-wordmark-main { font-size: 13px; }
+.footer-logo .brand-wordmark-city { padding-left: 0; }
+
+@media (max-width: 700px) {
+  .brand-wordmark-main {
+    gap: 6px;
+    font-size: 10px;
+    letter-spacing: 2.4px;
+  }
+
+  .brand-wordmark-city {
+    font-size: 6px;
+    letter-spacing: 4px;
+  }
+
+  .process-row {
+    grid-template-columns: 38px 64px minmax(0, 1fr);
+    gap: 16px;
+    padding: 24px 18px;
+  }
+
+  .process-number { font-size: 40px; }
+  .process-icon-shell { width: 64px; height: 64px; border-radius: 14px; }
+  .process-icon { width: 52px; height: 52px; }
+  .process-title { font-size: 10px; letter-spacing: 1.4px; }
+  .process-description { font-size: 12px; line-height: 1.6; }
+}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav class="site-nav" aria-label="Main navigation">
-  <a class="nav-logo" href="#home" aria-label="Sydney Bespoke Trainer home">
-    Bespoke <span>Trainer</span> Sydney
+  <a class="nav-logo brand-wordmark" href="#home" aria-label="Sydney Bespoke Trainer home">
+    <span class="brand-wordmark-main"><span class="brand-bespoke">Bespoke</span><span class="brand-trainer">Trainer</span></span>
+    <span class="brand-wordmark-city">Sydney</span>
   </a>
 
   <button
@@ -3862,40 +3985,45 @@ body {
     </div>
     <p class="body-text">A structured, methodical approach from day one. Nothing is left to chance — every step is purposeful and designed around your long-term progress.</p>
   </div>
-  <div style="display:flex; flex-direction:column; gap:1px; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.08);">
-    <div style="background:var(--charcoal); padding:36px 40px; display:flex; gap:40px; align-items:flex-start; border-left:3px solid var(--gold);">
-      <div style="font-family:'Bebas Neue',sans-serif; font-size:48px; color:rgba(201,168,76,0.2); line-height:1; flex-shrink:0; width:48px;">01</div>
+  <div class="process-list">
+    <div class="process-row">
+      <div class="process-number">01</div>
+      <div class="process-icon-shell"><img class="process-icon" src="assets/process-consultation.svg" alt="" loading="lazy" decoding="async"></div>
       <div>
-        <p style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Free Consultation</p>
-        <p style="font-size:14px; color:var(--grey-light); line-height:1.7; font-weight:300;">We discuss your goals, training history, lifestyle, schedule and any injuries to understand exactly what you need.</p>
+        <p class="process-title">Free Consultation</p>
+        <p class="process-description">We discuss your goals, training history, lifestyle, schedule and any injuries to understand exactly what you need.</p>
       </div>
     </div>
-    <div style="background:var(--charcoal-mid); padding:36px 40px; display:flex; gap:40px; align-items:flex-start; border-left:3px solid transparent;">
-      <div style="font-family:'Bebas Neue',sans-serif; font-size:48px; color:rgba(201,168,76,0.2); line-height:1; flex-shrink:0; width:48px;">02</div>
+    <div class="process-row">
+      <div class="process-number">02</div>
+      <div class="process-icon-shell"><img class="process-icon" src="assets/process-assessment.svg" alt="" loading="lazy" decoding="async"></div>
       <div>
-        <p style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Movement &amp; Technique Assessment</p>
-        <p style="font-size:14px; color:var(--grey-light); line-height:1.7; font-weight:300;">Your key movement patterns, form and technique are assessed to guide exercise selection and program design.</p>
+        <p class="process-title">Movement &amp; Technique Assessment</p>
+        <p class="process-description">Your key movement patterns, form and technique are assessed to guide exercise selection and program design.</p>
       </div>
     </div>
-    <div style="background:var(--charcoal); padding:36px 40px; display:flex; gap:40px; align-items:flex-start; border-left:3px solid transparent;">
-      <div style="font-family:'Bebas Neue',sans-serif; font-size:48px; color:rgba(201,168,76,0.2); line-height:1; flex-shrink:0; width:48px;">03</div>
+    <div class="process-row">
+      <div class="process-number">03</div>
+      <div class="process-icon-shell"><img class="process-icon" src="assets/process-program-design.svg" alt="" loading="lazy" decoding="async"></div>
       <div>
-        <p style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Bespoke Program Design</p>
-        <p style="font-size:14px; color:var(--grey-light); line-height:1.7; font-weight:300;">Your program is built around your assessment, goals, experience and schedule. Every exercise, set and rep range has a purpose.</p>
+        <p class="process-title">Bespoke Program Design</p>
+        <p class="process-description">Your program is built around your assessment, goals, experience and schedule. Every exercise, set and rep range has a purpose.</p>
       </div>
     </div>
-    <div style="background:var(--charcoal-mid); padding:36px 40px; display:flex; gap:40px; align-items:flex-start; border-left:3px solid transparent;">
-      <div style="font-family:'Bebas Neue',sans-serif; font-size:48px; color:rgba(201,168,76,0.2); line-height:1; flex-shrink:0; width:48px;">04</div>
+    <div class="process-row">
+      <div class="process-number">04</div>
+      <div class="process-icon-shell"><img class="process-icon" src="assets/process-progress.svg" alt="" loading="lazy" decoding="async"></div>
       <div>
-        <p style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Track Your Progress</p>
-        <p style="font-size:14px; color:var(--grey-light); line-height:1.7; font-weight:300;">Strength, performance and movement quality are tracked throughout your training, with progress measured against your goals.</p>
+        <p class="process-title">Track Your Progress</p>
+        <p class="process-description">Strength, performance and movement quality are tracked throughout your training, with progress measured against your goals.</p>
       </div>
     </div>
-    <div style="background:var(--charcoal); padding:36px 40px; display:flex; gap:40px; align-items:flex-start; border-left:3px solid transparent;">
-      <div style="font-family:'Bebas Neue',sans-serif; font-size:48px; color:rgba(201,168,76,0.2); line-height:1; flex-shrink:0; width:48px;">05</div>
+    <div class="process-row">
+      <div class="process-number">05</div>
+      <div class="process-icon-shell"><img class="process-icon" src="assets/process-optimise.svg" alt="" loading="lazy" decoding="async"></div>
       <div>
-        <p style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Review &amp; Optimise</p>
-        <p style="font-size:14px; color:var(--grey-light); line-height:1.7; font-weight:300;">Your program is regularly reviewed and adjusted to reflect your progress, recovery and evolving goals.</p>
+        <p class="process-title">Review &amp; Optimise</p>
+        <p class="process-description">Your program is regularly reviewed and adjusted to reflect your progress, recovery and evolving goals.</p>
       </div>
     </div>
   </div>
@@ -4032,7 +4160,10 @@ body {
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Bespoke <span>Trainer</span> Sydney</div>
+  <div class="footer-logo brand-wordmark" aria-label="Bespoke Trainer Sydney">
+    <span class="brand-wordmark-main"><span class="brand-bespoke">Bespoke</span><span class="brand-trainer">Trainer</span></span>
+    <span class="brand-wordmark-city">Sydney</span>
+  </div>
   <p class="footer-copy">© 2026 Sydney Bespoke Trainer · All rights reserved</p>
   <div class="social-links-footer" aria-label="Footer social links">
     <a class="social-link" href="https://www.instagram.com/krikorkafalian?igsh=ZDNsbnN6ZWtlcGp0&utm_source=qr" aria-label="Instagram" title="Instagram">
