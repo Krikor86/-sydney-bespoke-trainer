@@ -4,87 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sydney Bespoke Trainer | Personal Training Sydney CBD</title>
-<meta name="description" content="Premium one-on-one personal training in Sydney CBD with Greg Kafalian. Evidence-based strength, hypertrophy, fat-loss and body-composition coaching.">
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<link rel="canonical" href="https://sydneybespoketrainer.com/">
-
-<meta property="og:type" content="website">
-<meta property="og:locale" content="en_AU">
-<meta property="og:site_name" content="Sydney Bespoke Trainer">
-<meta property="og:title" content="Sydney Bespoke Trainer | Personal Training Sydney CBD">
-<meta property="og:description" content="Premium one-on-one personal training in Sydney CBD with 18+ years of evidence-based coaching experience.">
-<meta property="og:url" content="https://sydneybespoketrainer.com/">
-<meta property="og:image" content="https://sydneybespoketrainer.com/assets/hero-poster.v1.jpg">
-<meta property="og:image:alt" content="Greg Kafalian coaching a personal training client in Sydney CBD">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sydney Bespoke Trainer | Personal Training Sydney CBD">
-<meta name="twitter:description" content="Premium one-on-one personal training in Sydney CBD with 18+ years of evidence-based coaching experience.">
-<meta name="twitter:image" content="https://sydneybespoketrainer.com/assets/hero-poster.v1.jpg">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "HealthAndBeautyBusiness"],
-  "@id": "https://sydneybespoketrainer.com/#business",
-  "name": "Sydney Bespoke Trainer",
-  "url": "https://sydneybespoketrainer.com/",
-  "image": "https://sydneybespoketrainer.com/assets/hero-poster.v1.jpg",
-  "description": "Premium one-on-one personal training in Sydney CBD with evidence-based strength, hypertrophy, fat-loss and body-composition coaching.",
-  "founder": {
-    "@type": "Person",
-    "name": "Greg Kafalian",
-    "jobTitle": "Senior Personal Trainer"
-  },
-  "telephone": "+61 416 528 578",
-  "email": "gkpersonaltraining@gmail.com",
-  "priceRange": "$$$",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "35 Clarence Street",
-    "addressLocality": "Sydney",
-    "addressRegion": "NSW",
-    "postalCode": "2000",
-    "addressCountry": "AU"
-  },
-  "areaServed": {
-    "@type": "Place",
-    "name": "Sydney CBD"
-  },
-  "sameAs": [
-    "https://www.instagram.com/krikorkafalian/",
-    "https://www.facebook.com/share/1D1FVuDjF2/"
-  ],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Personal Training Services",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "One-on-One Personal Training"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Strength and Hypertrophy Coaching"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Fat Loss and Body Recomposition Coaching"
-        }
-      }
-    ]
-  }
-}
-</script>
-
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -1717,7 +1636,7 @@ footer { background: #050505; border-top-color: rgba(255,255,255,0.08); }
 
 .transformation-strip {
   display: grid !important;
-  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
   gap: clamp(10px, 1.2vw, 16px) !important;
   width: 100% !important;
 }
@@ -3481,7 +3400,7 @@ footer {
 /* ======== ABOUT PORTRAIT ======== */
 /* The portrait moves here from the hero, at a smaller size beside the copy. */
 .about-section {
-  grid-template-columns: minmax(220px, 360px) minmax(0, 1fr) !important;
+  grid-template-columns: minmax(260px, 420px) minmax(0, 1fr) !important;
   align-items: center !important;
 }
 
@@ -3523,7 +3442,7 @@ footer {
   }
 
   .about-img-col {
-    width: min(280px, 72vw) !important;
+    width: min(360px, calc(100% - 32px)) !important;
     margin: clamp(40px, 8vw, 56px) auto 0 !important;
   }
 
@@ -3532,162 +3451,526 @@ footer {
   }
 }
 
-/* ======== MOBILE WIDTH SAFETY ======== */
-html,
-body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: clip;
-  overscroll-behavior-x: none;
+/* Small mobile-only booking prompt; the rest of the original design is unchanged. */
+.mobile-sticky-cta {
+  display: none;
 }
 
-@supports not (overflow: clip) {
-  html,
-  body {
-    overflow-x: hidden;
+.pricing-inclusions {
+  margin: 0 0 20px;
+  padding: 22px 24px;
+  border: 1px solid rgba(255,90,31,.34);
+  border-radius: 18px;
+  background: rgba(255,255,255,.018);
+}
+
+.pricing-inclusions-title {
+  margin-bottom: 12px;
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+}
+
+.pricing-inclusions-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 22px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pricing-inclusions-list li {
+  color: var(--grey-light);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.45;
+}
+
+.pricing-inclusions-list li::before {
+  content: '✓';
+  margin-right: 8px;
+  color: var(--gold);
+}
+
+.pricing-grid {
+  display: block !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+.pricing-card,
+.pricing-card.featured,
+.pricing-card:not(.featured) {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    'tier price'
+    'detail price';
+  align-items: center;
+  gap: 5px 24px;
+  padding: 28px 0 !important;
+  border: 0 !important;
+  border-top: 1px solid rgba(255,255,255,.10) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.pricing-card.featured {
+  margin: 12px 0;
+  padding: 24px !important;
+  border: 2px solid var(--performance-orange, var(--gold)) !important;
+  border-radius: 18px !important;
+  background: rgba(255,90,31,.055) !important;
+}
+
+.pricing-card .popular-badge {
+  position: static !important;
+  grid-area: badge;
+  justify-self: start;
+  margin-bottom: 10px;
+  padding: 6px 11px !important;
+  border-radius: 7px;
+  background: rgba(255,90,31,.15) !important;
+  color: var(--performance-orange, var(--gold)) !important;
+}
+
+.pricing-card.featured {
+  grid-template-areas:
+    'badge badge'
+    'tier price'
+    'detail price';
+}
+
+.pricing-card .pricing-tier {
+  grid-area: tier;
+  margin: 0 !important;
+  color: #fff !important;
+  font-size: 15px !important;
+  font-weight: 700;
+  letter-spacing: 0 !important;
+  text-transform: none;
+}
+
+.pricing-card .pricing-price,
+.pricing-card.featured .pricing-price {
+  grid-area: price;
+  color: #fff !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 42px !important;
+  font-weight: 400;
+  letter-spacing: -1.8px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.pricing-unit {
+  margin-left: 2px;
+  color: var(--grey) !important;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.pricing-card .pricing-per,
+.pricing-card.featured .pricing-per {
+  grid-area: detail;
+  margin: 0 !important;
+  color: var(--performance-orange, var(--gold)) !important;
+  font-size: 11px !important;
+}
+
+.pricing-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.pricing-footer-note {
+  max-width: 620px;
+  color: var(--grey-light);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.pricing-footer .btn-gold {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 960px) {
+  .mobile-sticky-cta {
+    position: fixed;
+    z-index: 1200;
+    left: 50%;
+    right: auto;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    max-width: calc(100vw - 36px);
+    min-height: 46px;
+    padding: 0 22px;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 999px;
+    background: var(--performance-orange, var(--gold));
+    color: #090b0d;
+    box-shadow: 0 12px 30px rgba(0,0,0,.34), 0 4px 16px rgba(255,90,31,.20);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.55px;
+    text-align: center;
+    text-transform: uppercase;
+    transform: translateX(-50%);
+    transition: opacity .2s ease, transform .2s ease, box-shadow .2s ease;
   }
+
+  .mobile-sticky-cta.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 10px);
+  }
+
+  .pricing-inclusions-list {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .pricing-inclusions {
+    padding: 19px 20px;
+  }
+
+  .pricing-inclusions-list {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .pricing-inclusions-list li {
+    font-size: 11px;
+  }
+
+  .pricing-footer .btn-gold {
+    width: 100%;
+    text-align: center;
+  }
+
+  .pricing-card,
+  .pricing-card:not(.featured) {
+    padding: 24px 2px !important;
+  }
+
+  .pricing-card.featured {
+    padding: 22px 18px !important;
+  }
+
+  .pricing-card .pricing-price,
+  .pricing-card.featured .pricing-price {
+    font-size: 38px !important;
+  }
+}
+
+/* Keep the existing type system, at a quieter scale inspired by the reference. */
+.hero-headline {
+  font-size: clamp(44px, 5.4vw, 76px) !important;
+}
+
+.headline {
+  font-size: clamp(38px, 4.8vw, 62px) !important;
+}
+
+@media (max-width: 960px) {
+  .hero-headline {
+    font-size: clamp(34px, 9vw, 44px) !important;
+    line-height: 1.04 !important;
+  }
+
+  .headline,
+  .compact-results-header .headline {
+    font-size: clamp(34px, 9.5vw, 44px) !important;
+    line-height: .98 !important;
+  }
+
+  .body-text,
+  .hero-sub,
+  .pricing-note {
+    font-size: 14px !important;
+  }
+}
+
+/* ======== FINAL MOBILE QA: contrast, spacing and unobtrusive actions ======== */
+.hero-review-link {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.hero-actions .btn-outline-gold {
+  border-color: rgba(255,90,31,.72) !important;
+  color: #FFFFFF !important;
+}
+
+.testimonials-header .btn-outline-gold,
+.compact-results-header .btn-outline-gold {
+  border-color: rgba(255,90,31,.58) !important;
+  color: #17191C !important;
+}
+
+.pricing-section .pricing-inclusions-list li,
+.pricing-section .pricing-footer-note {
+  color: #5D6268 !important;
+}
+
+.pricing-section .pricing-card:not(.featured) .pricing-tier,
+.pricing-section .pricing-card:not(.featured) .pricing-price,
+.pricing-section .pricing-card.featured .pricing-tier,
+.pricing-section .pricing-card.featured .pricing-price {
+  color: #17191C !important;
+}
+
+.pricing-section .pricing-card .pricing-unit {
+  color: #62686F !important;
+}
+
+.pricing-section .pricing-card::before {
+  content: none !important;
+  display: none !important;
+}
+
+.pricing-section .pricing-card,
+.pricing-section .pricing-footer {
+  border-color: rgba(23,25,28,.13) !important;
+}
+
+.mobile-sticky-cta {
+  text-decoration: none !important;
+}
+
+@media (max-width: 960px) {
+  .site-nav {
+    height: 58px !important;
+    padding: 0 16px !important;
+  }
+
+  .mobile-shortcut-bar {
+    top: 58px !important;
+    gap: 8px !important;
+    padding: 7px 12px 8px !important;
+  }
+
+  .mobile-shortcut-bar a {
+    min-height: 32px !important;
+    padding: 7px 12px !important;
+    font-size: 8px !important;
+  }
+
+  html {
+    scroll-padding-top: 106px !important;
+  }
+
+  section[id],
+  div[id] {
+    scroll-margin-top: 106px !important;
+  }
+
+  .hero.premium-hero.premium-hero-soft {
+    padding-top: 118px !important;
+  }
+
+  .hero-headline {
+    font-size: clamp(33px, 8.5vw, 42px) !important;
+  }
+
+  .headline,
+  .compact-results-header .headline {
+    font-size: clamp(32px, 8.8vw, 42px) !important;
+  }
+
+  .testimonials-section {
+    padding: 52px 22px !important;
+  }
+
+  .compact-results-section {
+    padding: 48px 0 46px !important;
+  }
+
+  .compact-results-header {
+    margin-bottom: 24px !important;
+  }
+
+  .pricing-section {
+    padding-top: 52px !important;
+    padding-bottom: 52px !important;
+  }
+
+  .pricing-card,
+  .pricing-card:not(.featured) {
+    padding-block: 21px !important;
+  }
+
+  .pricing-card.featured {
+    padding: 20px 18px !important;
+  }
+
+  .mobile-sticky-cta {
+    left: auto !important;
+    right: 12px !important;
+    bottom: max(10px, env(safe-area-inset-bottom)) !important;
+    width: auto !important;
+    max-width: 220px !important;
+    min-height: 42px !important;
+    padding: 0 16px !important;
+    font-size: 8px !important;
+    letter-spacing: 1.15px !important;
+    transform: none !important;
+  }
+
+  .mobile-sticky-cta.is-hidden {
+    transform: translateY(10px) !important;
+  }
+}
+
+/* ======== REQUESTED MOBILE REFINEMENTS ======== */
+.hero-headline .hero-accent {
+  color: var(--performance-orange, var(--gold)) !important;
+}
+
+.hero-headline > .hero-line {
+  display: block !important;
+  width: max-content;
+  max-width: 100%;
+  white-space: nowrap !important;
+}
+
+.hero-headline > .hero-line:not(.hero-accent) {
+  color: #FFFFFF !important;
 }
 
 @media (max-width: 960px) {
   .mobile-shortcut-bar {
-    width: 100%;
-    max-width: 100vw;
-    box-sizing: border-box;
-    justify-content: space-between;
-    gap: 6px;
-    padding-inline: 8px;
-    overflow-x: hidden;
+    justify-content: space-between !important;
+    gap: 6px !important;
+    overflow-x: hidden !important;
+    padding-inline: 10px !important;
   }
 
   .mobile-shortcut-bar a {
-    flex: 1 1 0;
-    min-width: 0;
-    padding-inline: 3px;
-    font-size: clamp(7px, 2.2vw, 9px);
-    letter-spacing: clamp(0.25px, 0.16vw, 0.7px);
-  }
-}
-
-/* ======== FINAL WORDMARK + PROCESS ICONS ======== */
-.brand-wordmark {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  line-height: 1;
-  text-decoration: none;
-}
-
-.brand-wordmark-main {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 3.2px;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.brand-wordmark .brand-bespoke { color: var(--performance-orange) !important; }
-.brand-wordmark .brand-trainer { color: #FFFFFF !important; }
-
-.brand-wordmark-city {
-  color: rgba(255,255,255,0.68) !important;
-  font-size: 7px;
-  font-weight: 500;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  padding-left: 5px;
-}
-
-.process-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  background: rgba(255,90,31,0.10);
-  border: 1px solid rgba(255,90,31,0.10);
-}
-
-.process-row {
-  display: grid;
-  grid-template-columns: 48px 84px minmax(0, 1fr);
-  gap: 30px;
-  align-items: center;
-  padding: 32px 40px;
-  border-left: 3px solid transparent;
-}
-
-.process-row:nth-child(odd) { background: var(--charcoal); }
-.process-row:nth-child(even) { background: var(--charcoal-mid); }
-.process-row:first-child { border-left-color: var(--performance-orange); }
-
-.process-number {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 48px;
-  color: rgba(255,90,31,0.24);
-  line-height: 1;
-}
-
-.process-icon-shell {
-  display: grid;
-  place-items: center;
-  width: 84px;
-  height: 84px;
-  border-radius: 18px;
-  background: var(--warm-cream);
-  box-shadow: inset 0 0 0 1px rgba(10,12,14,0.08);
-}
-
-.process-icon {
-  display: block;
-  width: 68px;
-  height: 68px;
-}
-
-.process-title {
-  margin-bottom: 8px;
-  color: var(--performance-orange);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.process-description {
-  color: var(--grey-light);
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.7;
-}
-
-.footer-logo.brand-wordmark { align-items: flex-start; }
-.footer-logo .brand-wordmark-main { font-size: 13px; }
-.footer-logo .brand-wordmark-city { padding-left: 0; }
-
-@media (max-width: 700px) {
-  .brand-wordmark-main {
-    gap: 6px;
-    font-size: 10px;
-    letter-spacing: 2.4px;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    padding-inline: 4px !important;
+    font-size: clamp(7px, 2vw, 8px) !important;
+    letter-spacing: .9px !important;
   }
 
-  .brand-wordmark-city {
-    font-size: 6px;
-    letter-spacing: 4px;
+  .hero-content.premium-hero-content.premium-hero-copy {
+    text-align: left !important;
   }
 
-  .process-row {
-    grid-template-columns: 38px 64px minmax(0, 1fr);
-    gap: 16px;
-    padding: 24px 18px;
+  .hero-content.premium-hero-content.premium-hero-copy .hero-headline {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: clamp(22px, 5.9vw, 28px) !important;
+    line-height: 1.04 !important;
+    letter-spacing: -.35px !important;
+    text-align: left !important;
   }
 
-  .process-number { font-size: 40px; }
-  .process-icon-shell { width: 64px; height: 64px; border-radius: 14px; }
-  .process-icon { width: 52px; height: 52px; }
-  .process-title { font-size: 10px; letter-spacing: 1.4px; }
-  .process-description { font-size: 12px; line-height: 1.6; }
+  .hero-content.premium-hero-content.premium-hero-copy .hero-headline::first-line {
+    color: #FFFFFF !important;
+  }
+
+  .hero-content.premium-hero-content.premium-hero-copy .hero-eyebrow,
+  .hero-content.premium-hero-content.premium-hero-copy .hero-sub {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: left !important;
+  }
+
+  .hero-content.premium-hero-content.premium-hero-copy .hero-actions {
+    justify-content: flex-start !important;
+    width: 100% !important;
+  }
+
+  .testimonials-section {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .testimonials-header {
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+  }
+
+  .testimonials-grid {
+    display: flex !important;
+    grid-template-columns: none !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    overflow-x: auto !important;
+    padding: 0 22px 10px !important;
+    scroll-padding-left: 22px !important;
+    scroll-snap-type: x mandatory !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .testimonials-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .testimonials-grid .testimonial {
+    flex: 0 0 min(82vw, 340px) !important;
+    width: min(82vw, 340px) !important;
+    scroll-snap-align: start !important;
+  }
+
+  .pricing-section .pricing-card,
+  .pricing-section .pricing-card:not(.featured),
+  .pricing-section .pricing-card.featured {
+    grid-template-columns: minmax(0, 1fr) 150px !important;
+    column-gap: 14px !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .pricing-section .pricing-card .pricing-price,
+  .pricing-section .pricing-card.featured .pricing-price {
+    display: grid !important;
+    grid-template-columns: 100px 50px !important;
+    align-items: baseline !important;
+    width: 150px !important;
+    min-width: 150px !important;
+    justify-self: start !important;
+    text-align: left !important;
+  }
+
+  .pricing-section .pricing-card .pricing-amount {
+    width: 100px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pricing-section .pricing-card .pricing-unit {
+    width: 50px;
+    margin-left: 2px;
+    text-align: left;
+  }
+
+  .pricing-section .pricing-card .pricing-unit-placeholder {
+    visibility: hidden;
+  }
 }
 </style>
 </head>
@@ -3695,9 +3978,8 @@ body {
 
 <!-- NAV -->
 <nav class="site-nav" aria-label="Main navigation">
-  <a class="nav-logo brand-wordmark" href="#home" aria-label="Sydney Bespoke Trainer home">
-    <span class="brand-wordmark-main"><span class="brand-bespoke">Bespoke</span><span class="brand-trainer">Trainer</span></span>
-    <span class="brand-wordmark-city">Sydney</span>
+  <a class="nav-logo" href="#home" aria-label="Sydney Bespoke Trainer home">
+    Bespoke <span>Trainer</span> Sydney
   </a>
 
   <button
@@ -3723,7 +4005,7 @@ body {
       <li><a href="#contact">Contact</a></li>
     </ul>
 
-    <a href="#contact" class="nav-cta">Free Consultation</a>
+    <a href="#contact" class="nav-cta">Book a Free Consultation</a>
   </div>
 </nav>
 <div class="mobile-shortcut-bar" aria-label="Quick navigation">
@@ -3744,21 +4026,20 @@ body {
   <div class="hero-content premium-hero-content premium-hero-copy">
     <div class="hero-eyebrow">Sydney CBD · Personal Training</div>
     <h1 class="hero-headline">
-      OPTIMISED TRAINING.<br>
-      BUILT ON EVIDENCE.<br>
-      BACKED BY EXPERIENCE.
+      <span class="hero-line hero-accent">OPTIMISED TRAINING.</span>
+      <span class="hero-line">BUILT ON EVIDENCE.</span>
+      <span class="hero-line">BACKED BY EXPERIENCE.</span>
     </h1>
     <p class="hero-sub">Build muscle, increase strength, lose body fat and improve body composition.</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-gold">Book Free Consultation</a>
-      <a href="#reviews" class="btn-outline-gold">See Reviews</a>
+      <a href="#contact" class="btn-gold">Book a Free Consultation</a>
     </div>
   </div>
 
   <div class="hero-side">
     <div class="hero-portrait-card" aria-label="Sydney Bespoke Trainer studio footage">
-      <video class="hero-portrait-video" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="assets/hero-poster.v1.jpg" aria-hidden="true" tabindex="-1">
-        <source src="assets/hero-video.v2.mp4" type="video/mp4">
+      <video class="hero-portrait-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="assets/hero-poster.v1.jpg" aria-hidden="true" tabindex="-1">
+        <source src="assets/hero-video.mp4" type="video/mp4">
       </video>
       <div class="hero-portrait-overlay"></div>
       <div class="hero-portrait-badge">
@@ -3780,10 +4061,10 @@ body {
           <span>1:1</span>
           <small>Every Session</small>
         </div>
-        <div class="hero-metric">
-          <span>CBD</span>
-          <small>Sydney Location</small>
-        </div>
+        <a class="hero-metric hero-review-link" href="https://share.google/24IGfrohiR9Eu3bbU" target="_blank" rel="noopener noreferrer" aria-label="Read Sydney Bespoke Trainer reviews on Google">
+          <span>5★</span>
+          <small>Google Reviews</small>
+        </a>
       </div>
     </div>
   </div>
@@ -3809,7 +4090,7 @@ body {
 <!-- ABOUT -->
 <div class="about-section" id="about">
   <div class="about-img-col">
-    <img class="about-img" src="assets/greg-kafalian-about.v1.webp" alt="Greg Kafalian, head coach at Sydney Bespoke Trainer" decoding="async">
+    <img class="about-img" src="assets/greg-kafalian-about.v1.webp" alt="Greg Kafalian, head coach at Sydney Bespoke Trainer">
     <div class="about-img-overlay">
       <div class="about-name">Greg Kafalian</div>
       <div class="about-title-tag">Head Coach · Sydney Bespoke Trainer</div>
@@ -3836,7 +4117,7 @@ body {
       <div class="cred">Senior First Aid & CPR Certified</div>
     </div>
     <div class="about-cta">
-      <a href="#contact" class="btn-gold">Work With Greg</a>
+      <a href="#contact" class="btn-gold">Book a Free Consultation</a>
     </div>
   </div>
 </div>
@@ -3948,30 +4229,30 @@ body {
       <div class="eyebrow">Client Transformations</div>
       <h2 class="headline">RESULTS THAT<br>SPEAK.</h2>
     </div>
-    <a href="#contact" class="btn-outline-gold">Start Your Transformation →</a>
+    <a href="#contact" class="btn-outline-gold">Book a Free Consultation</a>
   </div>
 
   <div class="transformation-strip" aria-label="Client before and after photos">
     <article class="transformation-card compact-result-card">
-      <img src="assets/transformation-1.v1.webp" alt="Client before and after transformation 1" loading="lazy" decoding="async">
+      <img src="assets/transformation-1.v1.webp" alt="Client before and after transformation 1" loading="lazy">
     </article>
     <article class="transformation-card compact-result-card">
-      <img src="assets/transformation-2.v1.webp" alt="Client before and after transformation 2" loading="lazy" decoding="async">
+      <img src="assets/transformation-2.v1.webp" alt="Client before and after transformation 2" loading="lazy">
     </article>
     <article class="transformation-card compact-result-card">
-      <img src="assets/transformation-3.v1.webp" alt="Client before and after transformation 3" loading="lazy" decoding="async">
+      <img src="assets/transformation-3.v1.webp" alt="Client before and after transformation 3" loading="lazy">
     </article>
     <article class="transformation-card compact-result-card">
-      <img src="assets/transformation-4.v1.webp" alt="Client before and after transformation 4" loading="lazy" decoding="async">
+      <img src="assets/transformation-4.v1.webp" alt="Client before and after transformation 4" loading="lazy">
     </article>
     <article class="transformation-card compact-result-card">
-      <img src="assets/transformation-5.v1.webp" alt="Client before and after transformation 5" loading="lazy" decoding="async">
+      <img src="assets/transformation-5.v1.webp" alt="Client before and after transformation 5" loading="lazy">
     </article>
     <article class="transformation-card compact-result-card">
-      <img src="assets/transformation-6.v1.webp" alt="Client before and after transformation 6" loading="lazy" decoding="async">
+      <img src="assets/transformation-6.v1.webp" alt="Client before and after transformation 6" loading="lazy">
     </article>
     <article class="transformation-card compact-result-card">
-      <img src="assets/transformation-7.v1.webp" alt="Client before and after transformation 7" loading="lazy" decoding="async">
+      <img src="assets/transformation-7.v1.webp" alt="Client before and after transformation 7" loading="lazy">
     </article>
   </div>
 </section>
@@ -3985,45 +4266,40 @@ body {
     </div>
     <p class="body-text">A structured, methodical approach from day one. Nothing is left to chance — every step is purposeful and designed around your long-term progress.</p>
   </div>
-  <div class="process-list">
-    <div class="process-row">
-      <div class="process-number">01</div>
-      <div class="process-icon-shell"><img class="process-icon" src="assets/process-consultation.bold.svg" alt="" loading="lazy" decoding="async"></div>
+  <div style="display:flex; flex-direction:column; gap:1px; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.08);">
+    <div style="background:var(--charcoal); padding:36px 40px; display:flex; gap:40px; align-items:flex-start; border-left:3px solid var(--gold);">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:48px; color:rgba(201,168,76,0.2); line-height:1; flex-shrink:0; width:48px;">01</div>
       <div>
-        <p class="process-title">Free Consultation</p>
-        <p class="process-description">We discuss your goals, training history, lifestyle, schedule and any injuries to understand exactly what you need.</p>
+        <p style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Free Consultation</p>
+        <p style="font-size:14px; color:var(--grey-light); line-height:1.7; font-weight:300;">We discuss your goals, training history, lifestyle, schedule and any injuries to understand exactly what you need.</p>
       </div>
     </div>
-    <div class="process-row">
-      <div class="process-number">02</div>
-      <div class="process-icon-shell"><img class="process-icon" src="assets/process-assessment.bold.svg" alt="" loading="lazy" decoding="async"></div>
+    <div style="background:var(--charcoal-mid); padding:36px 40px; display:flex; gap:40px; align-items:flex-start; border-left:3px solid transparent;">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:48px; color:rgba(201,168,76,0.2); line-height:1; flex-shrink:0; width:48px;">02</div>
       <div>
-        <p class="process-title">Movement &amp; Technique Assessment</p>
-        <p class="process-description">Your key movement patterns, form and technique are assessed to guide exercise selection and program design.</p>
+        <p style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Movement &amp; Technique Assessment</p>
+        <p style="font-size:14px; color:var(--grey-light); line-height:1.7; font-weight:300;">Your key movement patterns, form and technique are assessed to guide exercise selection and program design.</p>
       </div>
     </div>
-    <div class="process-row">
-      <div class="process-number">03</div>
-      <div class="process-icon-shell"><img class="process-icon" src="assets/process-program-design.bold.svg" alt="" loading="lazy" decoding="async"></div>
+    <div style="background:var(--charcoal); padding:36px 40px; display:flex; gap:40px; align-items:flex-start; border-left:3px solid transparent;">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:48px; color:rgba(201,168,76,0.2); line-height:1; flex-shrink:0; width:48px;">03</div>
       <div>
-        <p class="process-title">Bespoke Program Design</p>
-        <p class="process-description">Your program is built around your assessment, goals, experience and schedule. Every exercise, set and rep range has a purpose.</p>
+        <p style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Bespoke Program Design</p>
+        <p style="font-size:14px; color:var(--grey-light); line-height:1.7; font-weight:300;">Your program is built around your assessment, goals, experience and schedule. Every exercise, set and rep range has a purpose.</p>
       </div>
     </div>
-    <div class="process-row">
-      <div class="process-number">04</div>
-      <div class="process-icon-shell"><img class="process-icon" src="assets/process-progress.bold.svg" alt="" loading="lazy" decoding="async"></div>
+    <div style="background:var(--charcoal-mid); padding:36px 40px; display:flex; gap:40px; align-items:flex-start; border-left:3px solid transparent;">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:48px; color:rgba(201,168,76,0.2); line-height:1; flex-shrink:0; width:48px;">04</div>
       <div>
-        <p class="process-title">Track Your Progress</p>
-        <p class="process-description">Strength, performance and movement quality are tracked throughout your training, with progress measured against your goals.</p>
+        <p style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Track Your Progress</p>
+        <p style="font-size:14px; color:var(--grey-light); line-height:1.7; font-weight:300;">Strength, performance and movement quality are tracked throughout your training, with progress measured against your goals.</p>
       </div>
     </div>
-    <div class="process-row">
-      <div class="process-number">05</div>
-      <div class="process-icon-shell"><img class="process-icon" src="assets/process-optimise.bold.svg" alt="" loading="lazy" decoding="async"></div>
+    <div style="background:var(--charcoal); padding:36px 40px; display:flex; gap:40px; align-items:flex-start; border-left:3px solid transparent;">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:48px; color:rgba(201,168,76,0.2); line-height:1; flex-shrink:0; width:48px;">05</div>
       <div>
-        <p class="process-title">Review &amp; Optimise</p>
-        <p class="process-description">Your program is regularly reviewed and adjusted to reflect your progress, recovery and evolving goals.</p>
+        <p style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Review &amp; Optimise</p>
+        <p style="font-size:14px; color:var(--grey-light); line-height:1.7; font-weight:300;">Your program is regularly reviewed and adjusted to reflect your progress, recovery and evolving goals.</p>
       </div>
     </div>
   </div>
@@ -4038,46 +4314,36 @@ body {
     </div>
     <p class="pricing-note">"You're not paying for a session. You're investing in a program built exclusively around you — your body, your goals, your life."</p>
   </div>
+  <div class="pricing-inclusions">
+    <p class="pricing-inclusions-title">Every session includes</p>
+    <ul class="pricing-inclusions-list">
+      <li>One-on-one coaching with Greg</li>
+      <li>Precise form and technique feedback</li>
+      <li>Training from your bespoke program</li>
+      <li>Nutrition and macro guidance</li>
+    </ul>
+  </div>
   <div class="pricing-grid">
     <div class="pricing-card">
       <p class="pricing-tier">Single Session</p>
-      <div class="pricing-price">$125</div>
-      <p class="pricing-per">per 45-minute session</p>
-      <ul class="pricing-features">
-        <li>One-on-one training with Greg</li>
-        <li>Nuanced coaching and precise feedback on form and technique</li>
-        <li>Guided training based on your bespoke program</li>
-        <li>Nutrition and macro guidance aligned with your goals</li>
-      </ul>
-      <button class="pricing-btn">Book a Session</button>
+      <div class="pricing-price"><span class="pricing-amount">$125</span><span class="pricing-unit pricing-unit-placeholder" aria-hidden="true">/session</span></div>
+      <p class="pricing-per">45 minutes</p>
     </div>
     <div class="pricing-card featured">
       <div class="popular-badge">Most Popular</div>
       <p class="pricing-tier">10 Session Pack</p>
-      <div class="pricing-price">$119</div>
-      <p class="pricing-per">per session · 5% saving</p>
-      <div class="pricing-save">Save ~$62 total</div>
-      <ul class="pricing-features">
-        <li>One-on-one training with Greg</li>
-        <li>Nuanced coaching and precise feedback on form and technique</li>
-        <li>Guided training based on your bespoke program</li>
-        <li>Nutrition and macro guidance aligned with your goals</li>
-      </ul>
-      <button class="pricing-btn">Get Started</button>
+      <div class="pricing-price"><span class="pricing-amount">$119</span><span class="pricing-unit">/session</span></div>
+      <p class="pricing-per">$1,190 total · Save $60</p>
     </div>
     <div class="pricing-card">
       <p class="pricing-tier">20 Session Pack</p>
-      <div class="pricing-price">$115</div>
-      <p class="pricing-per">per session · 8% saving</p>
-      <div class="pricing-save">Save ~$200 total</div>
-      <ul class="pricing-features">
-        <li>One-on-one training with Greg</li>
-        <li>Nuanced coaching and precise feedback on form and technique</li>
-        <li>Guided training based on your bespoke program</li>
-        <li>Nutrition and macro guidance aligned with your goals</li>
-      </ul>
-      <button class="pricing-btn">Get Started</button>
+      <div class="pricing-price"><span class="pricing-amount">$115</span><span class="pricing-unit">/session</span></div>
+      <p class="pricing-per">$2,300 total · Save $200</p>
     </div>
+  </div>
+  <div class="pricing-footer">
+    <p class="pricing-footer-note">No lock-in contracts. Start with a complimentary consultation to discuss the best option for you.</p>
+    <a href="#contact" class="btn-gold">Book a Free Consultation</a>
   </div>
 </section>
 
@@ -4086,7 +4352,7 @@ body {
   <div class="contact-grid">
     <div>
       <div class="eyebrow">Get In Touch</div>
-      <h2 class="headline">START WITH A<br>FREE SESSION.</h2>
+      <h2 class="headline">START WITH A<br>FREE CONSULTATION.</h2>
       <p class="body-text">No commitment. Just a conversation about your goals, your schedule, and how I can help you get there.</p>
       <div class="contact-details">
         <div class="contact-detail">
@@ -4122,9 +4388,9 @@ body {
       </div>
     </div>
     <div class="contact-form-box">
-      <h3 class="form-title">Book Your Free Consultation</h3>
+      <h3 class="form-title">Book a Free Consultation</h3>
       <p class="form-subtitle">No lock-in contracts. First session completely free.</p>
-      <form action='/success' method='POST' name='contact'>
+      <form action="/success" method="POST" name="contact" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="contact">
         <p style="display:none"><input name="bot-field"></p>
         <div class="form-row">
@@ -4151,7 +4417,7 @@ body {
             <option>Not sure yet</option>
           </select>
         </div>
-        <button type="submit" class="form-submit">Send My Enquiry →</button>
+        <button type="submit" class="form-submit">Book a Free Consultation</button>
         <p class="form-note">We'll be in touch within 24 hours.</p>
       </form>
     </div>
@@ -4160,10 +4426,7 @@ body {
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo brand-wordmark" aria-label="Bespoke Trainer Sydney">
-    <span class="brand-wordmark-main"><span class="brand-bespoke">Bespoke</span><span class="brand-trainer">Trainer</span></span>
-    <span class="brand-wordmark-city">Sydney</span>
-  </div>
+  <div class="footer-logo">Bespoke <span>Trainer</span> Sydney</div>
   <p class="footer-copy">© 2026 Sydney Bespoke Trainer · All rights reserved</p>
   <div class="social-links-footer" aria-label="Footer social links">
     <a class="social-link" href="https://www.instagram.com/krikorkafalian?igsh=ZDNsbnN6ZWtlcGp0&utm_source=qr" aria-label="Instagram" title="Instagram">
@@ -4180,12 +4443,13 @@ body {
     </a>
   </div>
   <ul class="footer-links">
-    <li><a href="/personal-trainer-sydney-cbd/">Personal Trainer Sydney CBD</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </footer>
+
+<a class="mobile-sticky-cta" href="#contact">Book a Free Consultation</a>
 
 
 <script>
@@ -4247,6 +4511,39 @@ body {
   });
   document.addEventListener('touchstart', play, { once: true, passive: true });
   document.addEventListener('click', play, { once: true });
+})();
+</script>
+
+<script>
+(() => {
+  const sticky = document.querySelector('.mobile-sticky-cta');
+  const inlineCtas = Array.from(document.querySelectorAll(
+    '.hero-actions, .about-content-col .btn-gold, #reviews, #results, #pricing, #contact'
+  ));
+  if (!sticky || !inlineCtas.length) return;
+
+  const updateSticky = () => {
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const inlineActionIsVisible = inlineCtas.some((target) => {
+      const rect = target.getBoundingClientRect();
+      return rect.bottom > 0 && rect.top < viewportHeight;
+    });
+    sticky.classList.toggle('is-hidden', inlineActionIsVisible);
+  };
+
+  let ticking = false;
+  const scheduleUpdate = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      updateSticky();
+      ticking = false;
+    });
+  };
+
+  window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  window.addEventListener('resize', scheduleUpdate);
+  updateSticky();
 })();
 </script>
 
