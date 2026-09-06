@@ -4228,6 +4228,109 @@ footer {
       width: 50px !important;
     }
   }
+
+/* ======== MOBILE FOOTER LAYOUT & WIDTH SAFETY ======== */
+.footer-links-heading {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+    overscroll-behavior-x: none;
+  }
+
+  @supports (overflow: clip) {
+    html,
+    body {
+      overflow-x: clip !important;
+    }
+  }
+
+  footer {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 40px 22px 104px !important;
+    gap: 18px !important;
+    align-items: center;
+  }
+
+  footer > * {
+    max-width: 100%;
+  }
+
+  .footer-logo {
+    line-height: 1.5;
+  }
+
+  .footer-copy {
+    max-width: 300px;
+    line-height: 1.6;
+  }
+
+  .footer-links {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px !important;
+    width: 100%;
+    max-width: 380px;
+    margin: 8px auto 0;
+  }
+
+  .footer-links li {
+    min-width: 0;
+  }
+
+  .footer-links-heading {
+    display: block;
+    grid-column: 1 / -1;
+    margin: 4px 0 0;
+    color: var(--performance-orange, var(--gold));
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+    line-height: 1.2;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  .footer-links-heading.footer-services-heading {
+    margin-top: 12px;
+  }
+
+  .footer-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 42px;
+    padding: 10px 7px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.035);
+    font-size: 9px;
+    letter-spacing: 1px;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+    text-align: center;
+  }
+
+  .footer-service-link {
+    grid-column: 1 / -1;
+  }
+
+  .footer-service-link a {
+    min-height: 46px;
+    border-color: rgba(255,90,31,0.34);
+    background: rgba(255,90,31,0.07);
+    color: var(--pure-white);
+  }
+}
+
 </style>
 </head>
 <body>
@@ -4750,13 +4853,15 @@ footer {
     </a>
   </div>
   <ul class="footer-links">
+    <li class="footer-links-heading" aria-hidden="true">Explore</li>
     <li><a href="#about">About</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#location">Location</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="/personal-trainer-sydney-cbd/">Personal Trainer Sydney CBD</a></li>
-    <li><a href="/personal-training-over-40-sydney/">Training Over 40</a></li>
+    <li class="footer-links-heading footer-services-heading" aria-hidden="true">Services</li>
+    <li class="footer-service-link"><a href="/personal-trainer-sydney-cbd/">Personal Trainer Sydney CBD</a></li>
+    <li class="footer-service-link"><a href="/personal-training-over-40-sydney/">Personal Training Over 40</a></li>
   </ul>
 </footer>
 
