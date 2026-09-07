@@ -4331,6 +4331,163 @@ footer {
   }
 }
 
+
+/* ======== COACHING PATHS: CONTEXTUAL SERVICE LINKS ======== */
+.coaching-paths-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 82% 0%, rgba(255,90,31,0.10), transparent 28%),
+    linear-gradient(145deg, #0A0C0E 0%, #1A1E22 52%, #0C0E10 100%);
+  color: var(--pure-white);
+  border-top: 1px solid rgba(255,90,31,0.18);
+}
+
+.coaching-paths-section::before {
+  content: '';
+  position: absolute;
+  left: clamp(18px, 5vw, 78px);
+  right: clamp(18px, 5vw, 78px);
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,90,31,0.70), transparent);
+  z-index: -1;
+}
+
+.coaching-paths-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr);
+  gap: 64px;
+  align-items: end;
+  margin-bottom: 48px;
+}
+
+.coaching-paths-section .headline,
+.coaching-paths-section .body-text {
+  color: var(--pure-white);
+}
+
+.coaching-paths-section .body-text {
+  max-width: 440px;
+}
+
+.coaching-paths-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.coaching-path-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 250px;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 38px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 92% 0%, rgba(255,90,31,0.12), transparent 36%),
+    linear-gradient(150deg, rgba(255,255,255,0.075), rgba(255,255,255,0.025));
+  color: var(--pure-white);
+  text-decoration: none;
+  box-shadow:
+    0 26px 76px rgba(0,0,0,0.30),
+    inset 0 1px 0 rgba(255,255,255,0.065);
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.coaching-path-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,90,31,0.58);
+  box-shadow:
+    0 32px 84px rgba(0,0,0,0.38),
+    0 0 0 1px rgba(255,90,31,0.08);
+}
+
+.coaching-path-card:focus-visible {
+  outline: 2px solid var(--performance-orange, var(--gold));
+  outline-offset: 4px;
+}
+
+.coaching-path-number {
+  display: block;
+  margin-bottom: 24px;
+  color: var(--performance-orange, var(--gold));
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.coaching-path-card h3 {
+  max-width: 470px;
+  margin-bottom: 14px;
+  color: #FFFFFF;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(27px, 3vw, 36px);
+  line-height: 1;
+  letter-spacing: 1.6px;
+}
+
+.coaching-path-card p {
+  max-width: 470px;
+  margin-bottom: 30px;
+  color: #B9BEC4;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.coaching-path-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  color: var(--performance-orange, var(--gold));
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+@media (max-width: 960px) {
+  .coaching-paths-section {
+    padding: 64px 22px;
+  }
+
+  .coaching-paths-header {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+
+  .coaching-paths-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .coaching-path-card {
+    min-height: 0;
+    padding: 28px 24px;
+    border-radius: 20px;
+  }
+
+  .coaching-path-number {
+    margin-bottom: 18px;
+  }
+
+  .coaching-path-card h3 {
+    font-size: clamp(26px, 8vw, 32px);
+  }
+
+  .coaching-path-card p {
+    margin-bottom: 22px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -4371,7 +4528,7 @@ footer {
   <a href="#about">About</a>
   <a href="#results">Results</a>
   <a href="#pricing">Pricing</a>
-  <a href="#contact">Contact</a>
+  <a href="#faq">FAQ</a>
   <a href="#contact">Book</a>
 </div>
 
@@ -4485,6 +4642,34 @@ footer {
     </div>
   </div>
 </div>
+
+
+<!-- COACHING PATHS -->
+<section class="coaching-paths-section" id="coaching">
+  <div class="coaching-paths-header">
+    <div>
+      <div class="eyebrow">Explore Coaching</div>
+      <h2 class="headline">COACHING BUILT<br>AROUND YOU.</h2>
+    </div>
+    <p class="body-text">Choose the coaching page that best matches what you're looking for.</p>
+  </div>
+
+  <div class="coaching-paths-grid">
+    <a class="coaching-path-card" href="/personal-trainer-sydney-cbd/">
+      <span class="coaching-path-number">01</span>
+      <h3>SYDNEY CBD PERSONAL TRAINING</h3>
+      <p>One-to-one coaching at 35 Clarence Street, minutes from Wynyard.</p>
+      <span class="coaching-path-link">View Sydney CBD coaching <span aria-hidden="true">→</span></span>
+    </a>
+
+    <a class="coaching-path-card" href="/personal-training-over-40-sydney/">
+      <span class="coaching-path-number">02</span>
+      <h3>PERSONAL TRAINING OVER 40</h3>
+      <p>Build strength and muscle, improve body composition and keep progressing confidently.</p>
+      <span class="coaching-path-link">View training over 40 <span aria-hidden="true">→</span></span>
+    </a>
+  </div>
+</section>
 
 <!-- WHY -->
 <section class="why-section" id="method">
