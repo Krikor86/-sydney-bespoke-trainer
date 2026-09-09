@@ -18,6 +18,35 @@ from = "/book-online/"
 to = "/#contact"
 status = 301
 
+[[redirects]]
+from = "/success"
+to = "/thank-you/"
+status = 301
+
+[[redirects]]
+from = "/success/"
+to = "/thank-you/"
+status = 301
+
+[[redirects]]
+from = "/personal-trainer-sydney-cbd.html"
+to = "/personal-trainer-sydney-cbd/"
+status = 301
+
+[[redirects]]
+from = "/personal-training-over-40-sydney.html"
+to = "/personal-training-over-40-sydney/"
+status = 301
+
+[[headers]]
+for = "/*"
+
+[headers.values]
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "SAMEORIGIN"
+Referrer-Policy = "strict-origin-when-cross-origin"
+Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
 [[headers]]
 for = "/assets/*"
 
