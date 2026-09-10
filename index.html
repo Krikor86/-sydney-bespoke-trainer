@@ -58,6 +58,7 @@
   html, body, main, section, header, footer, .band, .grid, .cell, .frame, .hero, .row, .tier, .q { background-color: var(--paper); }
   body { position: relative; width: 100%; max-width: 100%; overflow-x: hidden; overflow-x: clip; color: var(--ink); font-family: 'Archivo', system-ui, sans-serif; font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
   main, header, footer, section, .wrap, .nav { width: 100%; max-width: 100%; }
+  header, main, footer { overflow-x: hidden; overflow-x: clip; }
   .nav > *, .hero-grid > *, .about > *, .contact-grid > *, .doors > *, .sec-head > *, .steps > *, .tiers > * { min-width: 0; }
   a { color: inherit; }
   img, video { display: block; max-width: 100%; }
@@ -330,17 +331,18 @@
     .start-step .btn { grid-column: 2; justify-self: start; }
   }
   @media (max-width: 600px) {
-    html { scroll-padding-top: 112px; }
+    html { scroll-padding-top: 103px; }
     .topbar { display: none; }
     .nav { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: 59px 43px; height: 103px; padding: 0 16px; gap: 0 8px; align-content: stretch; }
-    .brand { min-width: 0; overflow: hidden; font-size: clamp(9px, 3.05vw, 11px); letter-spacing: -.025em; text-overflow: clip; }
-    .nav > .btn { max-width: 158px; min-height: 38px; margin-left: 0; padding-inline: 12px; font-size: 9px; }
-    .links { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); width: 100%; min-width: 0; margin: 0; align-self: stretch; border-top: 1px solid var(--line-soft); }
+    .brand { grid-column: 1; grid-row: 1; min-width: 0; overflow: hidden; font-size: clamp(9px, 3.05vw, 11px); letter-spacing: -.025em; text-overflow: clip; }
+    .nav > .btn { grid-column: 2; grid-row: 1; max-width: 158px; min-height: 38px; margin-left: 0; padding-inline: 12px; font-size: 9px; }
+    .links { grid-column: 1 / -1; grid-row: 2; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); width: 100%; min-width: 0; margin: 0; align-self: stretch; border-top: 1px solid var(--line-soft); }
     .links li:nth-child(4) { display: none; }
     .links li { min-width: 0; }
     .links a { justify-content: center; min-width: 0; min-height: 42px; padding: 0 2px; font-size: 8.5px; }
     .hero h1 { max-width: 100%; font-size: clamp(20px, 6.8vw, 30px); white-space: normal; }
     .hero h1 span { max-width: 100%; white-space: nowrap; }
+    .hero .wrap { overflow-x: hidden; overflow-x: clip; }
     .hero-sub { font-size: 21px; }
     .hero-media .tag { max-width: calc(100% - 28px); white-space: normal; }
     .trust-bar .figure { min-height: 104px; padding-inline: 10px; }
