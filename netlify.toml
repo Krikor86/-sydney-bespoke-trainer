@@ -1,3 +1,7 @@
+[build]
+command = "node scripts/apply-dark-anchors.mjs"
+publish = "."
+
 [[redirects]]
 from = "/pricing-plans/list"
 to = "/#pricing"
