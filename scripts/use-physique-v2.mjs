@@ -5,7 +5,7 @@ let html = await readFile(indexFile, 'utf8');
 
 html = html.replaceAll(
   '/assets/greg-kafalian-physique.v1.webp',
-  '/assets/greg-kafalian-physique.v2.jpg?v=4'
+  '/assets/greg-kafalian-physique-clean.v1.jpg?v=1'
 );
 
 await writeFile(indexFile, html, 'utf8');
