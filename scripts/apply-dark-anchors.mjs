@@ -141,6 +141,44 @@ if (!html.includes(marker)) {
     max-width: 100%;
   }
 
+  /* About: show the full coach photo and pair it with a physique image. */
+  #about .about {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  #about .about-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-width: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  #about .about-photo {
+    min-width: 0;
+    overflow: hidden;
+    border-right: 0;
+    background: var(--paper-2);
+  }
+
+  #about .about-photo + .about-photo {
+    border-left: 1px solid var(--line);
+  }
+
+  #about .about-photo img {
+    display: block;
+    width: 100%;
+    height: auto !important;
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
+
+  #about .about-copy {
+    width: min(920px, 100%);
+    margin: 0 auto;
+  }
+
   @media (max-width: 600px) {
     /* Keep the pricing CTA compact and clearly secondary to the enquiry form. */
     #pricing .pricing-cta {
@@ -174,8 +212,34 @@ if (!html.includes(marker)) {
     #pricing .amt {
       white-space: normal;
     }
+
+    #about .about-photos {
+      grid-template-columns: 1fr;
+    }
+
+    #about .about-photo + .about-photo {
+      border-left: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    #about .about-copy {
+      width: 100%;
+      margin: 0;
+    }
   }
 </style>`;
+
+  const oldAboutPhoto = '<div class="about-photo"><img src="/assets/greg-kafalian-about.v1.webp" alt="Greg Kafalian, head coach at Sydney Bespoke Trainer" loading="lazy"></div>';
+  const newAboutPhotos = `<div class="about-photos" data-about-gallery="coach-physique">
+          <figure class="about-photo about-photo-main"><img src="/assets/greg-kafalian-about.v1.webp" alt="Greg Kafalian, head coach at Sydney Bespoke Trainer" loading="lazy"></figure>
+          <figure class="about-photo about-photo-physique"><img src="/assets/greg-kafalian-physique.v1.webp" alt="Greg Kafalian demonstrating the physique behind his strength and hypertrophy coaching" loading="lazy"></figure>
+        </div>`;
+
+  if (!html.includes(oldAboutPhoto)) {
+    throw new Error('Could not find the current About photo block in index.html');
+  }
+
+  html = html.replace(oldAboutPhoto, newAboutPhotos);
 
   if (!html.includes('</head>')) {
     throw new Error('Could not find </head> in index.html');
