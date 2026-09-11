@@ -195,3 +195,111 @@ if (!html.includes(marker)) {
   html = html.replace('</head>', `${darkAnchorStyles}\n</head>`);
   await writeFile(indexFile, html, 'utf8');
 }
+
+const overflowMarker = 'data-mobile-overflow-lock="v3"';
+if (!html.includes(overflowMarker)) {
+  const overflowLock = `
+<style ${overflowMarker}>
+  html,
+  body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: clip !important;
+    overscroll-behavior-x: none;
+  }
+
+  body {
+    position: relative;
+  }
+
+  @media (max-width: 600px) {
+    header,
+    main,
+    footer,
+    section,
+    .wrap,
+    .nav,
+    .hero,
+    .hero-grid,
+    .figures,
+    .grid,
+    .about,
+    .ledger,
+    .steps,
+    .tiers,
+    .tier,
+    .inc,
+    .doors,
+    .door,
+    .faq,
+    .contact,
+    .contact-grid,
+    .contact-actions,
+    .form {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+    }
+
+    header,
+    main,
+    footer,
+    section,
+    .wrap,
+    .nav,
+    .hero,
+    #method,
+    #about,
+    #results,
+    #process,
+    #pricing,
+    #faq,
+    #contact,
+    .contact,
+    .contact-grid,
+    .form {
+      overflow-x: clip !important;
+    }
+
+    .contact-actions > *,
+    .form > *,
+    .field,
+    input,
+    select,
+    textarea,
+    button,
+    a {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    /* Preserve the intended horizontal swipe only inside Results. */
+    #results .shots {
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      overscroll-behavior-x: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+</style>
+<script ${overflowMarker}>
+  (() => {
+    const keepPageCentered = () => {
+      if (window.scrollX !== 0) window.scrollTo(0, window.scrollY);
+    };
+    window.addEventListener('scroll', keepPageCentered, { passive: true });
+    window.addEventListener('resize', keepPageCentered, { passive: true });
+    window.addEventListener('pageshow', keepPageCentered, { passive: true });
+    document.addEventListener('touchend', keepPageCentered, { passive: true });
+  })();
+</script>`;
+
+  if (!html.includes('</head>')) {
+    throw new Error('Could not find </head> in index.html for overflow lock');
+  }
+
+  html = html.replace('</head>', `${overflowLock}\n</head>`);
+  await writeFile(indexFile, html, 'utf8');
+}
