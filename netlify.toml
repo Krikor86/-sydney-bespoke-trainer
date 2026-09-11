@@ -1,5 +1,5 @@
 [build]
-command = "node scripts/rebuild-physique.mjs && node scripts/rebuild-physique-clean.mjs && node scripts/apply-dark-anchors.mjs && node scripts/use-physique-v2.mjs && node scripts/rewrite-homepage-copy.mjs && node scripts/refine-homepage-mobile-and-audiences.mjs && node scripts/refine-seo-page-copy.mjs && node scripts/dark-reviews.mjs"
+command = "node scripts/rebuild-physique.mjs && node scripts/rebuild-physique-clean.mjs && node scripts/apply-dark-anchors.mjs && node scripts/use-physique-v2.mjs && node scripts/rewrite-homepage-copy.mjs && node scripts/refine-homepage-mobile-and-audiences.mjs && node scripts/refine-seo-page-copy.mjs && node scripts/dark-reviews.mjs && node scripts/refine-hero-positioning.mjs"
 publish = "."
 
 [[redirects]]
