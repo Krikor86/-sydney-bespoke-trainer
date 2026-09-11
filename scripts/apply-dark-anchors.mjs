@@ -141,6 +141,17 @@ if (!html.includes(marker)) {
     max-width: 100%;
   }
 
+  @media (max-width: 960px) {
+    /* Show the complete About portrait instead of forcing a 4:3 crop through the arms. */
+    #about .about-photo img {
+      width: 100% !important;
+      height: auto !important;
+      aspect-ratio: auto !important;
+      object-fit: contain !important;
+      object-position: center center !important;
+    }
+  }
+
   @media (max-width: 600px) {
     /* Keep the pricing CTA compact and clearly secondary to the enquiry form. */
     #pricing .pricing-cta {
