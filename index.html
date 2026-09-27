@@ -196,7 +196,7 @@
   .inc li::before { content: '+ '; color: var(--orange); font-weight: 700; }
 
   /* ---------- WHO: two doors ---------- */
-  .doors { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--line); }
+  .doors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 1px solid var(--line); }
   .door { display: flex; flex-direction: column; padding: clamp(24px, 3.5vw, 48px) clamp(16px, 2.5vw, 36px); text-decoration: none; }
   .door + .door { border-left: 1px solid var(--line); }
   .door:hover { background: var(--white); }
@@ -572,6 +572,12 @@
           <p>Intelligent strength, body composition and longevity coaching for men and women over 40.</p>
           <span class="go">Personal training over 40</span>
         </a>
+        <a class="door" href="/online-coaching/">
+          <span class="mono">03 · Online Coaching</span>
+          <h3>Expert programming. Wherever you train.</h3>
+          <p>Personalised programming, weekly check-ins and direct technique feedback with Greg for $199 per month.</p>
+          <span class="go">Explore online coaching</span>
+        </a>
       </div>
     </div>
   </section>
@@ -629,6 +635,7 @@
     <div class="foot-links">
       <a href="/personal-trainer-sydney-cbd/">Sydney CBD</a>
       <a href="/personal-training-over-40-sydney/">Over 40</a>
+      <a href="/online-coaching/">Online Coaching</a>
       <a href="https://www.instagram.com/krikorkafalian" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.facebook.com/share/1D1FVuDjF2/" target="_blank" rel="noopener">Facebook</a>
     </div>
