@@ -411,6 +411,28 @@
     .btn, .index li a, .index li a .arr, .hero-media img, .hero-media video, .shot img, .contact-action, .links a::after { transition: none !important; transform: none !important; }
   }
 
+
+  /* ---------- HERO PRESENTATION REFINEMENTS ---------- */
+  .hero .wrap { position: relative; }
+  .hero h1 { max-width: 1200px; }
+  .hero-sub { margin-top: clamp(22px, 3vw, 36px); }
+  .hero-media::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, transparent 65%, rgba(0,0,0,.2)); }
+  .hero-media .tag { z-index: 1; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); background: rgba(248,245,239,.93); }
+  .index .lede { font-size: clamp(17px, 1.55vw, 21px); line-height: 1.48; letter-spacing: -.015em; }
+  .index .cta-cell .btn { min-height: 58px; font-size: 12px; }
+  .trust-bar { position: relative; }
+  .trust-bar .figure { min-height: 150px; }
+  @media (min-width: 961px) {
+    .hero-grid { grid-template-columns: minmax(0, 1.2fr) minmax(330px, .8fr); }
+  }
+  @media (max-width: 600px) {
+    .hero-sub { margin-top: 18px; }
+    .hero-media .tag { font-size: 10px; }
+    .index .lede { font-size: 17px; }
+    .index .cta-cell .btn { min-height: 52px; }
+    .trust-bar .figure { min-height: 108px; }
+  }
+
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-W6RP41ZV96"></script>
 <script>
