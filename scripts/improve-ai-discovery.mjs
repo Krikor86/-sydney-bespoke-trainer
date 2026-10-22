@@ -8,7 +8,7 @@ const homeURL = new URL('../index.html', import.meta.url);
 const cbdURL = new URL('../personal-trainer-sydney-cbd/index.html', import.meta.url);
 
 const maleQuestion = 'Are you a male personal trainer in Sydney CBD?';
-const maleAnswer = 'Yes. I am Greg Kafalian, a male personal trainer with over 18 years of coaching experience. I train men and women one-to-one at 35 Clarence Street, a short walk from Wynyard Station.';
+const maleAnswer = 'Yes. I am Greg Kafalian, a male personal trainer with 19 years of coaching experience. I train men and women one-to-one at 35 Clarence Street, a short walk from Wynyard Station.';
 const beginnerQuestion = 'Do you coach women and people new to strength training?';
 const beginnerAnswer = 'Yes. I coach women and men, from beginners to experienced lifters. I assess your movement and technique, then build and adjust your training around your goals and experience.';
 
@@ -77,6 +77,15 @@ function updateStructuredData(html, page) {
   return updated;
 }
 
+function updateExperienceYears(html) {
+  // Source copy passes through several older build refinements. Normalise the
+  // published wording at the end so every page consistently says 19 years.
+  // This updates experience claims only and never touches session pricing.
+  return html
+    .replace(/\b(?:more than|over)\s+18\+?\s+years\b/gi, '19 years')
+    .replace(/\b18\+?\s+years\b/g, '19 years');
+}
+
 let home = await readFile(homeURL, 'utf8');
 home = home.replace(
   '<meta property="og:site_name" content="Bespoke Trainer Sydney">',
@@ -102,6 +111,7 @@ if (!home.includes('name="discovery_source"')) {
   );
 }
 home = updateStructuredData(home, 'home');
+home = updateExperienceYears(home);
 await writeFile(homeURL, home, 'utf8');
 
 let cbd = await readFile(cbdURL, 'utf8');
@@ -127,7 +137,7 @@ cbd = cbd.replace(
 );
 
 const previousHero = '<p>If you want your training to be thought through rather than improvised, I’ll coach you one-to-one, choose the exercises carefully and adjust the program as I see how you respond.</p>';
-const newHero = '<p>Looking for a male personal trainer in Sydney CBD? I’m Greg Kafalian. I coach men and women one-to-one at 35 Clarence Street, near Wynyard, with over 18 years of experience in strength, muscle development and body composition. Your program is built around how you move, perform and progress.</p>';
+const newHero = '<p>Looking for a male personal trainer in Sydney CBD? I’m Greg Kafalian. I coach men and women one-to-one at 35 Clarence Street, near Wynyard, with 19 years of experience in strength, muscle development and body composition. Your program is built around how you move, perform and progress.</p>';
 cbd = requiredReplace(cbd, previousHero, newHero, 'Sydney CBD hero introduction');
 
 const faqCBDAnchor = '        <details><summary>Where is the personal training studio?</summary>';
@@ -141,6 +151,12 @@ if (!cbd.includes('<summary>' + maleQuestion + '</summary>')) {
   );
 }
 cbd = updateStructuredData(cbd, 'cbd');
+cbd = updateExperienceYears(cbd);
 await writeFile(cbdURL, cbd, 'utf8');
 
-console.log('AI search discovery copy, structured data and enquiry attribution updated.');
+// The 40+ page also includes Greg's experience in its service copy.
+const over40URL = new URL('../personal-training-over-40-sydney/index.html', import.meta.url);
+const over40 = await readFile(over40URL, 'utf8');
+await writeFile(over40URL, updateExperienceYears(over40), 'utf8');
+
+console.log('AI search discovery copy, structured data, enquiry attribution and 19 years of experience updated.');
