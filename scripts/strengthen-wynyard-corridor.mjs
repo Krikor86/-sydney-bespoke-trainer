@@ -7,7 +7,7 @@ const homeURL = new URL('../index.html', import.meta.url);
 const pageTitle = 'Personal Trainer Wynyard & Sydney CBD | Bespoke Trainer Sydney';
 const pageDescription = 'One-to-one personal training near Wynyard Station, convenient for Barangaroo and The Rocks. Train with Greg Kafalian at 35 Clarence Street, Sydney CBD.';
 const localQuestion = 'Can I train with Greg if I work in Barangaroo or The Rocks?';
-const localAnswer = 'Yes. All in-person sessions take place at 35 Clarence Street in Sydney CBD, near Wynyard Station. Clients travelling from Barangaroo and The Rocks are welcome. Greg coaches every session directly.';
+const localAnswer = 'Yes. I coach clients from Barangaroo and The Rocks one-to-one inside Snap Fitness at 35 Clarence Street, near Wynyard Station. This is a commercial gym, with every booked session coached directly by me.';
 
 function mustReplace(html, from, to, label) {
   if (html.includes(to)) return html;
@@ -27,7 +27,7 @@ const originalLocation = '<div class="rows"><div class="row"><div class="row-num
 
 const improvedLocation = [
   '<div class="rows" aria-label="Wynyard, Barangaroo and The Rocks coaching location">',
-  '  <div class="row"><div class="row-num">35</div><div><h3>Train with me at 35 Clarence Street</h3><p>Every in-person session takes place here in Sydney CBD, near Wynyard Station. I coach each session myself and build your program around your movement, goals and progress.</p></div></div>',
+  '  <div class="row"><div class="row-num">35</div><div><h3>Train with me at Snap Fitness, 35 Clarence Street</h3><p>My one-to-one sessions are held inside Snap Fitness, a commercial gym in Sydney CBD near Wynyard Station. I coach each session myself and build your program around your movement, goals and progress.</p></div></div>',
   '  <div class="row"><div class="row-num">01</div><div><h3>Personal trainer near Wynyard Station</h3><p>If you live or work around Wynyard, my Clarence Street location makes it practical to fit a 45-minute, one-to-one training session around your working day. Weekday appointments start from 7am, subject to availability.</p></div></div>',
   '  <div class="row"><div class="row-num">02</div><div><h3>Personal training for Barangaroo professionals</h3><p>Working in Barangaroo or near King Street Wharf? Train with me at 35 Clarence Street in the neighbouring CBD, with strength, muscle-building and body-composition programming tailored to your starting point.</p></div></div>',
   '  <div class="row"><div class="row-num">03</div><div><h3>One-to-one coaching near The Rocks</h3><p>Clients coming from The Rocks and the northern CBD can train at my Wynyard-area location. You work directly with me throughout your program rather than being handed over to a different trainer each session.</p></div></div>',
@@ -35,7 +35,7 @@ const improvedLocation = [
 ].join('\n');
 page = mustReplace(page, originalLocation, improvedLocation, 'location section');
 
-const existingFAQ = '<details><summary>Where is the personal training studio?</summary>';
+const existingFAQ = '<details><summary>Where do personal training sessions take place?</summary>';
 const addedFAQ = '<details><summary>' + localQuestion + '</summary><p>' + localAnswer + '</p></details>\n        ';
 if (!page.includes('<summary>' + localQuestion + '</summary>')) {
   page = mustReplace(page, existingFAQ, addedFAQ + existingFAQ, 'local-area FAQ');
