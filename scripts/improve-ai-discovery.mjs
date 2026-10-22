@@ -7,8 +7,8 @@ import { readFile, writeFile } from 'node:fs/promises';
 const homeURL = new URL('../index.html', import.meta.url);
 const cbdURL = new URL('../personal-trainer-sydney-cbd/index.html', import.meta.url);
 
-const maleQuestion = 'Are you a male personal trainer in Sydney CBD?';
-const maleAnswer = 'Yes. I am Greg Kafalian, a male personal trainer with 19 years of coaching experience. I train men and women one-to-one at 35 Clarence Street, a short walk from Wynyard Station.';
+const coachingQuestion = 'How do you tailor the training to each person?';
+const coachingAnswer = 'I start with a movement and technique assessment, then build your program around your goals, experience and how you respond to training. I coach every session myself and adjust your plan as you progress.';
 const beginnerQuestion = 'Do you coach women and people new to strength training?';
 const beginnerAnswer = 'Yes. I coach women and men, from beginners to experienced lifters. I assess your movement and technique, then build and adjust your training around your goals and experience.';
 
@@ -33,9 +33,19 @@ function updateStructuredData(html, page) {
       if (types.includes('FAQPage')) {
         sawFAQ = true;
         const pairs = page === 'home'
-          ? [[maleQuestion, maleAnswer]]
-          : [[maleQuestion, maleAnswer], [beginnerQuestion, beginnerAnswer]];
+          ? [[coachingQuestion, coachingAnswer]]
+          : [[coachingQuestion, coachingAnswer], [beginnerQuestion, beginnerAnswer]];
         node.mainEntity = Array.isArray(node.mainEntity) ? node.mainEntity : [];
+        if (page === 'home') {
+          const locationFAQ = node.mainEntity.find(q => q.name === 'How long are sessions and where do we train?');
+          if (!locationFAQ) throw new Error('Home location FAQ missing from structured data');
+          const newAnswer = 'Sessions are 45 minutes and coached one-to-one inside Snap Fitness, a commercial gym at 35 Clarence Street in Sydney CBD, near Wynyard Station.';
+          if (!locationFAQ.acceptedAnswer) throw new Error('Home location answer missing');
+          if (locationFAQ.acceptedAnswer.text !== newAnswer) {
+            locationFAQ.acceptedAnswer.text = newAnswer;
+            changed = true;
+          }
+        }
         for (const [question, answer] of pairs) {
           if (!node.mainEntity.some(q => q.name === question)) {
             node.mainEntity.push({
@@ -94,10 +104,10 @@ home = home.replace(
 );
 
 const faqHomeAnchor = '          <details><summary>How long are sessions and where do we train?</summary>';
-if (!home.includes('<summary>' + maleQuestion + '</summary>')) {
+if (!home.includes('<summary>' + coachingQuestion + '</summary>')) {
   home = requiredReplace(
     home, faqHomeAnchor,
-    '          <details><summary>' + maleQuestion + '</summary><p>' + maleAnswer + '</p></details>\n' + faqHomeAnchor,
+    '          <details><summary>' + coachingQuestion + '</summary><p>' + coachingAnswer + '</p></details>\n' + faqHomeAnchor,
     'homepage FAQ insertion'
   );
 }
@@ -111,6 +121,10 @@ if (!home.includes('name="discovery_source"')) {
     'consultation source attribution field'
   );
 }
+home = home.replace(
+  /(<details><summary>How long are sessions and where do we train?<\/summary><p>)[^<]*(<\/p><\/details>)/,
+  '$1Sessions are 45 minutes and coached one-to-one inside Snap Fitness, a commercial gym at 35 Clarence Street in Sydney CBD, near Wynyard Station.$2'
+);
 home = updateStructuredData(home, 'home');
 home = updateExperienceYears(home);
 await writeFile(homeURL, home, 'utf8');
@@ -141,12 +155,12 @@ const previousHero = '<p>If you want your training to be thought through rather 
 const newHero = '<p>Looking for a male personal trainer in Sydney CBD? I’m Greg Kafalian. I coach men and women one-to-one at 35 Clarence Street, near Wynyard, with 19 years of experience in strength, muscle development and body composition. Your program is built around how you move, perform and progress.</p>';
 cbd = requiredReplace(cbd, previousHero, newHero, 'Sydney CBD hero introduction');
 
-const faqCBDAnchor = '        <details><summary>Where is the personal training studio?</summary>';
-if (!cbd.includes('<summary>' + maleQuestion + '</summary>')) {
+const faqCBDAnchor = '        <details><summary>Where do personal training sessions take place?</summary>';
+if (!cbd.includes('<summary>' + coachingQuestion + '</summary>')) {
   cbd = requiredReplace(
     cbd,
     faqCBDAnchor,
-    '        <details><summary>' + maleQuestion + '</summary><p>' + maleAnswer + '</p></details>\n' +
+    '        <details><summary>' + coachingQuestion + '</summary><p>' + coachingAnswer + '</p></details>\n' +
     '        <details><summary>' + beginnerQuestion + '</summary><p>' + beginnerAnswer + '</p></details>\n' + faqCBDAnchor,
     'Sydney CBD FAQ insertion'
   );
