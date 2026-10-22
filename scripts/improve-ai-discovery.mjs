@@ -161,3 +161,135 @@ const over40 = await readFile(over40URL, 'utf8');
 await writeFile(over40URL, updateExperienceYears(over40), 'utf8');
 
 console.log('AI search discovery copy, structured data, enquiry attribution and 19 years of experience updated.');
+
+// Final presentation and naming pass. Runs after all historical build scripts,
+// including the AI discovery changes above. Do not alter displayed prices.
+const primaryBrand = 'Bespoke Trainer Sydney';
+const legacyBrand = 'Sydney Bespoke Trainer';
+
+function standardiseBrandAndSchema(html) {
+  // The older public name remains as an alias in JSON-LD, not in visible copy.
+  html = html.replaceAll(legacyBrand, primaryBrand);
+  return html.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g, (whole, jsonText) => {
+    const data = JSON.parse(jsonText);
+    const nodes = Array.isArray(data['@graph']) ? data['@graph'] : [data];
+    let changed = false;
+    for (const node of nodes) {
+      const types = Array.isArray(node['@type']) ? node['@type'] : [node['@type']];
+      if (types.some(t => ['LocalBusiness', 'HealthAndBeautyBusiness', 'ProfessionalService'].includes(t))) {
+        if (node.name !== primaryBrand) { node.name = primaryBrand; changed = true; }
+        if (node.alternateName !== legacyBrand) { node.alternateName = legacyBrand; changed = true; }
+      }
+    }
+    return changed ? '<script type="application/ld+json">\n' + JSON.stringify(data, null, 2) + '\n</script>' : whole;
+  });
+}
+
+const compactPricingStyle = String.raw`
+<style data-pricing-clarity="v2">
+  /* Put the orange best-value highlight on 20 sessions, not 10. */
+  #pricing .tier:nth-child(2) {
+    background-color: #111111 !important;
+    box-shadow: none !important;
+  }
+  #pricing .tier:nth-child(3) {
+    background-color: #1a1a1a !important;
+    box-shadow: inset 0 3px 0 var(--orange) !important;
+  }
+  #pricing .tier.pick .mono { color: var(--orange) !important; }
+  #pricing .tier .amt { font-size: clamp(50px, 5.9vw, 84px); }
+  @media (max-width: 600px) {
+    #pricing .sec-head h2 {
+      font-size: clamp(34px, 9vw, 40px) !important;
+      line-height: .98 !important;
+    }
+    #pricing .sec-head p { font-size: 14px; line-height: 1.5; }
+    #pricing .pricing-belief blockquote { font-size: clamp(18px, 4.7vw, 20px) !important; line-height: 1.42; }
+    #pricing .tier { padding: 23px 18px !important; }
+    #pricing .tier .amt {
+      font-size: clamp(42px, 11.2vw, 48px) !important;
+      line-height: 1 !important;
+      margin: 13px 0 8px;
+    }
+    #pricing .tier .amt small { font-size: 12px !important; }
+    #pricing .tier .mono { font-size: 11px !important; }
+    #pricing .tier p { font-size: 13px !important; }
+    .doors .door h3 { font-size: clamp(28px, 8vw, 36px) !important; line-height: 1.02; }
+    .doors .door p { font-size: 15px; line-height: 1.5; }
+  }
+</style>`;
+
+async function finishPage(path, options = {}) {
+  const url = new URL('../' + path, import.meta.url);
+  let html = await readFile(url, 'utf8');
+  html = standardiseBrandAndSchema(html);
+
+  if (options.pricing) {
+    html = requiredReplace(
+      html,
+      '<div class="tier pick"><span class="mono">10 session pack · Most popular</span>',
+      '<div class="tier"><span class="mono">10 session pack</span>',
+      'Remove unverified most-popular badge from 10-pack'
+    );
+    html = requiredReplace(
+      html,
+      '<div class="tier"><span class="mono">20 session pack</span>',
+      '<div class="tier pick"><span class="mono">20 session pack · Best value</span>',
+      'Highlight 20-pack as best per-session value'
+    );
+    if (!html.includes('data-pricing-clarity="v2"')) {
+      html = requiredReplace(html, '</head>', compactPricingStyle + '\n</head>', 'pricing style insertion');
+    }
+  }
+
+  if (options.supportingPage) {
+    html = requiredReplace(
+      html, '/assets/seo-pages.v1.css', '/assets/seo-pages.v2.css',
+      path + ' shared theme stylesheet'
+    );
+    html = html.replace(
+      'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap',
+      'https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap'
+    );
+    if (options.additionalFooterLink) {
+      // Link directly to online coaching from both local-service pages.
+      html = requiredReplace(
+        html,
+        '<nav><a href="/">Home</a>',
+        '<nav><a href="/online-coaching/">Online Coaching</a><a href="/">Home</a>',
+        path + ' footer navigation'
+      );
+    }
+  }
+
+  if (options.onlineNav) {
+    html = requiredReplace(html, '<body>\n  <header>', '<body>\n  <header class="site-nav">', 'online header class');
+    html = requiredReplace(
+      html,
+      '<nav>\n      <a href="#included">',
+      '<nav class="nav-links" aria-label="Online coaching sections">\n      <a href="#included">',
+      'online navigation class'
+    );
+    html = requiredReplace(html, '<a class="book" href="/#contact">Enquire Now</a>', '<a class="book" href="/#contact">Talk To Greg</a>', 'online primary CTA');
+    if (!html.includes('class="mobile-tabs"')) {
+      html = requiredReplace(
+        html,
+        '  </header>\n\n  <main>',
+        '  </header>\n  <nav class="mobile-tabs" aria-label="Online coaching page sections"><a href="#included">Included</a><a href="#process">Process</a><a href="#faq">FAQ</a></nav>\n\n  <main>',
+        'online mobile navigation'
+      );
+    }
+  }
+
+  await writeFile(url, html, 'utf8');
+}
+
+await finishPage('index.html', { pricing: true });
+await finishPage('personal-trainer-sydney-cbd/index.html', { supportingPage: true, additionalFooterLink: true });
+await finishPage('personal-training-over-40-sydney/index.html', { supportingPage: true, additionalFooterLink: true });
+await finishPage('online-coaching/index.html', { supportingPage: true, onlineNav: true });
+await finishPage('404.html');
+await finishPage('thank-you/index.html');
+await finishPage('success/index.html');
+
+console.log('Unified Bespoke Trainer Sydney branding and page design; compact pricing now highlights 20 sessions without changing rates.');
