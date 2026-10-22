@@ -3,6 +3,26 @@ command = "node scripts/rebuild-physique.mjs && node scripts/rebuild-physique-cl
 publish = "."
 
 [[redirects]]
+from = "/contact"
+to = "/#contact"
+status = 301
+
+[[redirects]]
+from = "/contact/"
+to = "/#contact"
+status = 301
+
+[[redirects]]
+from = "/contact-us"
+to = "/#contact"
+status = 301
+
+[[redirects]]
+from = "/contact-us/"
+to = "/#contact"
+status = 301
+
+[[redirects]]
 from = "/pricing-plans/list"
 to = "/#pricing"
 status = 301

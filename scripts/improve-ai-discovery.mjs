@@ -284,6 +284,29 @@ async function finishPage(path, options = {}) {
   await writeFile(url, html, 'utf8');
 }
 
+// Supporting service pages refer to #website in their WebPage structured data.
+// Publish the matching WebSite entity once on the homepage, linked to the
+// canonical business profile without changing any visible content.
+async function ensureWebSiteEntity() {
+  const url = new URL('../index.html', import.meta.url);
+  let html = await readFile(url, 'utf8');
+  if (html.includes('id="brand-website-schema"')) return;
+  const website = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': 'https://sydneybespoketrainer.com/#website',
+    url: 'https://sydneybespoketrainer.com/',
+    name: 'Bespoke Trainer Sydney',
+    alternateName: 'Sydney Bespoke Trainer',
+    inLanguage: 'en-AU',
+    publisher: { '@id': 'https://sydneybespoketrainer.com/#business' }
+  };
+  const script = '<script type="application/ld+json" id="brand-website-schema">\n' +
+    JSON.stringify(website, null, 2) + '\n</script>';
+  html = requiredReplace(html, '</head>', script + '\n</head>', 'WebSite schema placement');
+  await writeFile(url, html, 'utf8');
+}
+
 await finishPage('index.html', { pricing: true });
 await finishPage('personal-trainer-sydney-cbd/index.html', { supportingPage: true, additionalFooterLink: true });
 await finishPage('personal-training-over-40-sydney/index.html', { supportingPage: true, additionalFooterLink: true });
@@ -291,5 +314,7 @@ await finishPage('online-coaching/index.html', { supportingPage: true, onlineNav
 await finishPage('404.html');
 await finishPage('thank-you/index.html');
 await finishPage('success/index.html');
+
+await ensureWebSiteEntity();
 
 console.log('Unified Bespoke Trainer Sydney branding and page design; compact pricing now highlights 20 sessions without changing rates.');
