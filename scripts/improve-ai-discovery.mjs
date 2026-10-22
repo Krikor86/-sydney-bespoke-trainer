@@ -83,7 +83,8 @@ function updateExperienceYears(html) {
   // This updates experience claims only and never touches session pricing.
   return html
     .replace(/\b(?:more than|over)\s+18\+?\s+years\b/gi, '19 years')
-    .replace(/\b18\+?\s+years\b/g, '19 years');
+    .replace(/\b18\+?\s+years\b/g, '19 years')
+    .replace('<div class="big">18<s>+</s></div><span class="mono">Years Experience</span>', '<div class="big">19</div><span class="mono">Years Experience</span>');
 }
 
 let home = await readFile(homeURL, 'utf8');
