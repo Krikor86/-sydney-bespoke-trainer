@@ -74,7 +74,7 @@ function updateStructuredData(html, page) {
       }
       if (page === 'cbd' && types.includes('WebPage')) {
         const title = 'Personal Trainer Sydney CBD | Greg Kafalian';
-        const description = 'Looking for a male personal trainer in Sydney CBD? Train one-to-one with Greg Kafalian near Wynyard for strength, muscle and body composition.';
+        const description = 'Looking for a personal trainer in Sydney CBD? Train one-to-one with Greg Kafalian near Wynyard for strength, muscle and body composition.';
         if (node.name !== title) { node.name = title; changed = true; }
         if (node.description !== description) { node.description = description; changed = true; }
       }
@@ -136,7 +136,7 @@ cbd = cbd.replace(
 );
 cbd = cbd.replace(
   /<meta name="description" content="[^"]*">/,
-  '<meta name="description" content="Looking for a male personal trainer in Sydney CBD? Train one-to-one with Greg Kafalian near Wynyard for strength, muscle and body composition.">'
+  '<meta name="description" content="Looking for a personal trainer in Sydney CBD? Train one-to-one with Greg Kafalian near Wynyard for strength, muscle and body composition.">'
 );
 cbd = cbd.replace(
   '<meta property="og:site_name" content="Bespoke Trainer Sydney">',
@@ -152,7 +152,7 @@ cbd = cbd.replace(
 );
 
 const previousHero = '<p>If you want your training to be thought through rather than improvised, I’ll coach you one-to-one, choose the exercises carefully and adjust the program as I see how you respond.</p>';
-const newHero = '<p>Looking for a male personal trainer in Sydney CBD? I’m Greg Kafalian. I coach men and women one-to-one at 35 Clarence Street, near Wynyard, with 19 years of experience in strength, muscle development and body composition. Your program is built around how you move, perform and progress.</p>';
+const newHero = '<p>Looking for a personal trainer in Sydney CBD? I’m Greg Kafalian. I coach men and women one-to-one at 35 Clarence Street, near Wynyard, with 19 years of experience in strength, muscle development and body composition. Your program is built around how you move, perform and progress.</p>';
 cbd = requiredReplace(cbd, previousHero, newHero, 'Sydney CBD hero introduction');
 
 const faqCBDAnchor = '        <details><summary>Where do personal training sessions take place?</summary>';
